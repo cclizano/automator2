@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const CHANNEL_AUTOMATOR = 'https://hooks.slack.com/services/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';
+const CHANNEL_AUTOMATOR = '';
 
 const postNotification = async (message) => {
   if(!CHANNEL_AUTOMATOR) return;
