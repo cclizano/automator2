@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const CHANNEL_AUTOMATOR = '';
+const CHANNEL_AUTOMATOR = process.env.SLACK_URL;
 
 const postNotification = async (message) => {
   if(!CHANNEL_AUTOMATOR) return;

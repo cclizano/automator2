@@ -3,6 +3,7 @@ const querystring = require('querystring');
 const axios = require('../utils/axios');
 const slack = require('../utils/slack');
 const common = require('../utils/common');
+require('dotenv').config();
 
 const URL = 'https://sae.corteelectoral.gub.uy/sae/agendarReserva/Paso1.xhtml';
 
@@ -45,12 +46,13 @@ const checkAvailability = async () => {
     const $ch2 = cheerio.load(html2);
     if ($ch2.text().includes('En la oficina seleccionada no hay cupos disponibles')) {
       console.log('No hay cupos');
+      await slack.postNotification(`@here Probando URL: \n${URL}?e=1&a=1&r=1`);
       return;
     }
 
     console.log('HAY CUPOS DISPONIBLES');
 
-    await slack.postNotification(`@Oliver HAY CUPOS DISPONIBLES \n${URL}`);
+    await slack.postNotification(`@here Corre Magaly!! HAY CUPOS DISPONIBLES \n${URL}?e=1&a=1&r=1`);
   }
 };
 
